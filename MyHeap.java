@@ -37,8 +37,13 @@ public class MyHeap{
       }
     }
   }
+  /*- push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
+     - precondition: index is between 0 and data.length-1 inclusive.
+  */
   private static void pushUp(int[]data,int index){
+    //traces up the heap from starting index until it reaches zero
     for (int i = index; i > 0; i /= 2){
+      //checks and executes valid swaps
       if (data[i] > data[i/2]){
         int replace = data[i];
         data[i] = data[i/2];
@@ -46,9 +51,17 @@ public class MyHeap{
       }
     }
   }
+  //- convert the array into a valid heap. [ should be O(n) ]
   public static void heapify(int[] data){
-
+    //starting from bottom of the heap
+    for (int i = data.length-1; i > -1; i--){
+      pushDown(data,data.length,i);
+    }
   }
+  /*- sort the array [ should be O(nlogn) ] :
+     converting it into a heap
+     removing the largest value n-1 times (remove places at end of the sub-array)
+  */
   public static void heapsort(int[] data){
 
   }
