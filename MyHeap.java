@@ -63,6 +63,13 @@ public class MyHeap{
      removing the largest value n-1 times (remove places at end of the sub-array)
   */
   public static void heapsort(int[] data){
-
+    heapify(data);
+    //check from bottom up, swap root and last number and subtract 1 from the length of the array you're checking, and pushDown that number to ensure valid heap
+    for (int i = data.length-1; i>-1; i--){
+      int replace = data[0];
+      data[0] = data[i];
+      data[i] = replace;
+      pushDown(data,i,0);
+    }
   }
 }
