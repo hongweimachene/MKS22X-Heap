@@ -9,18 +9,21 @@ public class MyHeap{
     while (hasChildren) {
       int ch1 = 2*index+1;
       int ch2 = 2*index+2;
+      //no children
       if (ch1 >= size && ch2 >= size){
         hasChildren = false;
-      } else if (ch1 < size && ch2 >= size) {
+      } else if (ch1 < size && ch2 >= size) { //if only 1 child
         if (data[index] < data[ch1]){
           int replace = data[index];
           data[index] = data[ch1];
           data[ch1] = replace;
           index = ch1;
         } else {
+          //the parent has valid children, no children to swap with
           hasChildren = false;
         }
-      } else if (ch1 < size && ch2 < size) {
+      } else if (ch1 < size && ch2 < size) { //if 2 child
+        //swap with the largest child 
         if (data[index] >= data[ch1] && data[index] >= data[ch2]){
           hasChildren = false;
         } else if (Math.max(data[ch1], data[ch2]) == data[ch1] && data[index] < data[ch1]){
